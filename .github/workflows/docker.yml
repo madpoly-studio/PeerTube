@@ -27,10 +27,12 @@ jobs:
         id: set-matrix
         run: |
           one="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile\", \"ref\": \"develop\", \"tags\": \"chocobozzz/peertube:develop-trixie,chocobozzz/peertube:develop\" }"
-          two="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile\", \"ref\": \"master\", \"tags\": \"chocobozzz/peertube:production-trixie,chocobozzz/peertube:$(git describe --abbrev=0)-trixie,chocobozzz/peertube:production,chocobozzz/peertube:$(git describe --abbrev=0)\" }"
-          three="{ \"build-peertube\": false, \"file\": \"./support/docker/production/Dockerfile.nginx\", \"ref\": \"master\", \"tags\": \"chocobozzz/peertube-webserver:latest\" }"
+          # two="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile\", \"ref\": \"master\", \"tags\": \"chocobozzz/peertube:production-trixie,chocobozzz/peertube:$(git describe --abbrev=0)-trixie,chocobozzz/peertube:production,chocobozzz/peertube:$(git describe --abbrev=0)\" }"
+          # one="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile.bookworm\", \"ref\": \"develop\", \"tags\": \"madpoly-studio/peertube:develop-bookworm\" }"
+          two="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile\", \"ref\": \"master\", \"tags\": \"ghcr.io/madpoly-studio/peertube:production-trixie,ghcr.io/madpoly-studio/peertube:$(git describe --abbrev=0)-trixie\" }"
+          # three="{ \"build-peertube\": false, \"file\": \"./support/docker/production/Dockerfile.nginx\", \"ref\": \"master\", \"tags\": \"madpoly-studio/peertube-webserver:latest\" }"
 
-          matrix="[$one,$two,$three]"
+          matrix="[$two]"
           echo "matrix={\"include\":$matrix}" >> $GITHUB_OUTPUT
 
   docker:
