@@ -78,7 +78,7 @@ class YoutubeDLWrapper {
     logger.debug('Get subtitles from youtube dl.', { url: this.url, files, ...lTags() })
 
     const subtitles = files.reduce((acc, filename) => {
-      const matched = filename.match(/\.([a-z]{2})(-[a-z]+)?\.(vtt|ttml)/i)
+      const matched = filename.match(/\.([a-z]{2,3})(-[a-z]+)?\.(vtt|ttml)/i)
       if (!matched?.[1]) return acc
 
       return [
