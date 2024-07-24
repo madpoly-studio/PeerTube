@@ -25,11 +25,11 @@ jobs:
           # FIXME: https://github.com/actions/checkout/issues/290
           git fetch --force --tags
 
-          one="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile.bookworm\", \"ref\": \"develop\", \"tags\": \"chocobozzz/peertube:develop-bookworm\" }"
-          two="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile.bookworm\", \"ref\": \"master\", \"tags\": \"chocobozzz/peertube:production-bookworm,chocobozzz/peertube:$(git describe --abbrev=0)-bookworm\" }"
-          three="{ \"build-peertube\": false, \"file\": \"./support/docker/production/Dockerfile.nginx\", \"ref\": \"master\", \"tags\": \"chocobozzz/peertube-webserver:latest\" }"
+          # one="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile.bookworm\", \"ref\": \"develop\", \"tags\": \"madpoly-studio/peertube:develop-bookworm\" }"
+          two="{ \"build-peertube\": true, \"file\": \"./support/docker/production/Dockerfile.bookworm\", \"ref\": \"master\", \"tags\": \"ghcr.io/madpoly-studio/peertube:production-bookworm,ghcr.io/madpoly-studio/peertube:$(git describe --abbrev=0)-bookworm\" }"
+          # three="{ \"build-peertube\": false, \"file\": \"./support/docker/production/Dockerfile.nginx\", \"ref\": \"master\", \"tags\": \"madpoly-studio/peertube-webserver:latest\" }"
 
-          matrix="[$one,$two,$three]"
+          matrix="[$two]"
           echo "matrix={\"include\":$matrix}" >> $GITHUB_OUTPUT
 
   docker:
